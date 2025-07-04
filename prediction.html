@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sales Prediction - Big Mart</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">📊 Big Mart Analytics</div>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="prediction.html" class="nav-link active">Predict Sales</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Prediction Form -->
+    <section class="prediction-section">
+        <div class="container">
+            <h1>Sales Prediction Tool</h1>
+            <p>Enter product and store details to predict sales performance</p>
+            
+            <div class="prediction-container">
+                <form class="prediction-form" id="predictionForm">
+                    <div class="form-group">
+                        <label for="itemWeight">Item Weight (kg)</label>
+                        <input type="number" id="itemWeight" step="0.01" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="itemFatContent">Item Fat Content</label>
+                        <select id="itemFatContent" required>
+                            <option value="">Select Fat Content</option>
+                            <option value="Low Fat">Low Fat</option>
+                            <option value="Regular">Regular</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="itemVisibility">Item Visibility</label>
+                        <input type="number" id="itemVisibility" step="0.001" min="0" max="1" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="itemType">Item Type</label>
+                        <select id="itemType" required>
+                            <option value="">Select Item Type</option>
+                            <option value="Dairy">Dairy</option>
+                            <option value="Soft Drinks">Soft Drinks</option>
+                            <option value="Meat">Meat</option>
+                            <option value="Fruits and Vegetables">Fruits and Vegetables</option>
+                            <option value="Household">Household</option>
+                            <option value="Baking Goods">Baking Goods</option>
+                            <option value="Snack Foods">Snack Foods</option>
+                            <option value="Frozen Foods">Frozen Foods</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="itemMRP">Item MRP ($)</label>
+                        <input type="number" id="itemMRP" step="0.01" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="outletSize">Outlet Size</label>
+                        <select id="outletSize" required>
+                            <option value="">Select Outlet Size</option>
+                            <option value="Small">Small</option>
+                            <option value="Medium">Medium</option>
+                            <option value="High">High</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="outletType">Outlet Type</label>
+                        <select id="outletType" required>
+                            <option value="">Select Outlet Type</option>
+                            <option value="Grocery Store">Grocery Store</option>
+                            <option value="Supermarket Type1">Supermarket Type1</option>
+                            <option value="Supermarket Type2">Supermarket Type2</option>
+                            <option value="Supermarket Type3">Supermarket Type3</option>
+                        </select>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary">Predict Sales</button>
+                </form>
+                
+                <div class="result-container" id="resultContainer" style="display: none;">
+                    <h3>Prediction Result</h3>
+                    <div class="result-box">
+                        <div class="result-value" id="resultValue">$0.00</div>
+                        <p>Predicted Sales Amount</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Big Mart Analytics. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('predictionForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Simple prediction logic (replace with actual ML model)
+            const weight = parseFloat(document.getElementById('itemWeight').value);
+            const visibility = parseFloat(document.getElementById('itemVisibility').value);
+            const mrp = parseFloat(document.getElementById('itemMRP').value);
+            
+            // Basic calculation (replace with your ML model)
+            const predictedSales = (weight * 10 + visibility * 1000 + mrp * 2.5).toFixed(2);
+            
+            document.getElementById('resultValue').textContent = `$${predictedSales}`;
+            document.getElementById('resultContainer').style.display = 'block';
+            document.getElementById('resultContainer').scrollIntoView({ behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>
